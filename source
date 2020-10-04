@@ -1,3 +1,18 @@
+// ********************************************************************************************************************
+// Menu Stubbing Project
+// C. A. Ybarra
+// October 1 2020
+//
+// Purpose: Using a self-selected programming language and menu display method, create a stubbed code file and executable.
+//
+// Requirements:
+//    1. The menu shall contain at least 10 menu items.
+//    2. The menu shall contain an exit item selection.
+//    3. The menu shall contain an error response for invalid entry.
+//    4. The menu shall display a message indicating that an item was incomplete when selected.
+//    5. The menu shall be continuously displayed until the exit item is selected.
+//**********************************************************************************************************************
+
 #include<iostream>
 
 using namespace std;
