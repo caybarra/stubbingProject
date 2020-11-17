@@ -11,17 +11,73 @@
 //    3. The menu shall contain an error response for invalid entry.
 //    4. The menu shall display a message indicating that an item was incomplete when selected.
 //    5. The menu shall be continuously displayed until the exit item is selected.
+//
+//	Version 3:  Date: 10 Oct 2020
+//				Modified by: C. A. Ybarra
+//				Modifications:
+//                              		(1) Included do-while loop
+//      Version 4:  Date: 17 Nov 2020
+//				Modified by: C. A. Ybarra
+//				Modifications:
+//						(1) Completely removed do-while loop, to correct errors.
+//						(2) Changed to while loop only.
+//						(3) Included function for menu to display menu, and accept user choice of color.
+//						(4) Included function for display to show results based on user input from menu function.
+//						(5) Included exit functions for exit options offered by program.
+//
 //**********************************************************************************************************************
 
 #include<iostream>
 
 using namespace std;
 
+// include function prototypes
+void menu(int& choice);
+void display(int choice, char& decision);
+
 int main()
 {
-	// create variable to save user's choice
+	// create variable to save user's choice and decision respectively
 	int choice = 0;
+	char decision = 'y';
+	
+	// prompt user for decision to view menu
+	cout << endl << "Open Favorite color menu (Y/N)?" << endl;
+	cin >> decision;
 
+	while (decision != 'N' || decision != 'n')
+	{
+		if (decision == 'Y' || decision == 'y')
+		{
+			menu(choice);
+
+			display(choice, decision);
+		}
+
+		else if (decision == 'N' || decision == 'n')
+		{
+			cout << "Exiting program." << endl;
+
+			exit(0);
+		}
+
+		else
+		{
+			//cout << "aDecision = " << decision << endl << endl; // added for testing
+			cout << "Invalid entry." << endl;
+			cout << "Try again." << endl;
+			cout << endl << "Open Favorite color menu (Y/N)?" << endl;
+			cin >> decision;
+
+			menu(choice);
+
+			display(choice, decision);
+		}
+
+	}
+	
+
+/*
 	//Prompt user to select number corresponding with favorite color
 	cout << endl
 		<< "Please enter the number that represents your favorite color (1-10):" << endl
@@ -115,14 +171,153 @@ int main()
 	
 	cout << endl 
 		<< "Press any key to continue." << endl;
-
+*/
 	//Pause screen for troubleshooting
-	//system ("pause");
-	cin.get();
+	//system ("pause"); // added for testing only
+	//cin.get();  //Removed b/c unnecessary
+	
 	cin.get();
 
 	//
-	//return 0;
+	return 0;
 
 }
+
+// function for menu to display menu, and accept user choice of color
+void menu(int& choice)
+{
+	//Prompt user to select number corresponding with favorite color
+	cout << endl
+		<< "Please enter the number that represents your favorite color (1-10):" << endl
+		<< "1 - Violet" << endl
+		<< "2 - Blue" << endl
+		<< "3 - Green" << endl
+		<< "4 - Yellow" << endl
+		<< "5 - Orange" << endl
+		<< "6 - Red" << endl
+		<< "7 - Magenta" << endl
+		<< "8 - Cyan" << endl
+		<< "9 - Turquois" << endl
+		<< "10 - Pink" << endl
+		//<< "X - exit" << endl; // this exit option replaced by line 203
+		<< "0 - exit" << endl;
+
+	// Prompt user for input
+	cout << endl
+		<< "Enter choice here: ";
+
+	//Accept selection from user and store choice in variable.
+	cin >> choice;
+
+	// Space added for formatting
+	cout << endl;
+
+}
+
+// function for display to show results based on user input from menu function.
+void display(int aChoice, char& aDecision)
+{
+	if (aChoice == 0)
+	{
+		cout << "Exiting program. " << endl;
+
+		exit(0);
+
+	}
+
+	else if (aChoice == 1)
+	{
+		cout << "Your favorite color is Violet!" << endl << endl;
+		//cout << endl
+		//	<< "Dialog for this choice not yet created" << endl
+		//	<< endl;
+	}
+
+	else if (aChoice == 2)
+	{
+		//cout << "Your favorite color is Blue!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 3)
+	{
+		//cout << "Your favorite color is Green!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 4)
+	{
+		//cout << "Your favorite color is Yellow!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 5)
+	{
+		//cout << "Your favorite color is Orange!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 6)
+	{
+		//cout << "Your favorite color is Red!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 7)
+	{
+		//cout << "Your favorite color is Magenta!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 8)
+	{
+		//cout << "Your favorite color is Cyan!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 9)
+	{
+		//cout << "Your favorite color is Turquois!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	else if (aChoice == 10)
+	{
+		//cout << "Your favorite color is Pink!" << endl;
+		cout << endl
+			<< "Dialog for this choice not yet created" << endl
+			<< endl;
+	}
+
+	//else if (choice <= 0 || choice > 10)
+	else if (aChoice < 0 || aChoice > 10)
+	{
+		cout << "Invalid entry." << endl
+			<< endl;
+
+		menu(aChoice);
+
+	}
+
+	cout << "Would you like to play again? (Y/N)" << endl << endl;
+	cin >> aDecision;
+
+}
+
 
